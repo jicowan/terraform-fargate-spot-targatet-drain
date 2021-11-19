@@ -100,7 +100,7 @@ func HandleRequest(e ECSEvent) error {
 	var service []string
 	for _, attachment := range e.Detail.Attachments {
 		if attachment.Type != "eni" || attachment.Details == nil || len(attachment.Details) == 0  {
-			break
+			continue
 		}
 
 		if e.Detail.StopCode == "TerminationNotice" && strings.Contains(e.Detail.Group, "service:") {
